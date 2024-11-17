@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    color: #fff;
+    line-height: 1.6;
+    font-size: 16px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* En-tête */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #00ff99;
+}
+
+header h1 {
+    color: #00ff99;
+    text-transform: uppercase;
+    font-size: 3em;
+}
+
+/* Section principale */
+main {
+    flex: 1;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+main h2 {
+    color: #00ff99;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+main p {
+    color: #d3d3d3;
+    font-size: 1.2em;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Liens */
+a {
+    color: #00ff99;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff4081;
+}
+
+/* Boutons futuristes */
+button {
+    background: linear-gradient(45deg, #00ff99, #ff4081);
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 153, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+}
+
+/* Effet survol des éléments */
+section:hover {
+    background: rgba(0, 255, 153, 0.1);
+    transition: background 0.3s ease;
+}
+
+/* Pied de page */
+footer {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    border-top: 2px solid #00ff99;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #00ff99;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation de texte */
+h1, h2, p {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
