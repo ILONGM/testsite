@@ -1,18 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu de l'Avion</title>
+    <title>Jeu de la Fusée</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <canvas id="gameCanvas"></canvas>
+    <div class="container">
+        <!-- Fusée -->
+        <div id="rocket" class="rocket">
+            <div id="o2Tank" class="fuel-tank"></div>
+            <div id="h2Tank" class="fuel-tank"></div>
+        </div>
+
+        <!-- Boutons -->
+        <button id="fillO2">Remplir O2</button>
+        <button id="fillH2">Remplir H2</button>
+        <button id="launchRocket">Décollage</button>
     </div>
+    
     <script src="game.js"></script>
 </body>
-</html>
 </html>
