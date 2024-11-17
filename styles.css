@@ -5,16 +5,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-    color: #fff;
-    line-height: 1.6;
-    font-size: 16px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+ body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
 }
+
 
 h1, h2, h3 {
     font-family: 'Orbitron', sans-serif;
