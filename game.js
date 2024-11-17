@@ -9,15 +9,20 @@ canvas.height = 600;
 // Position de départ et taille de l'avion
 let planeX = 275;  // Position X de l'avion
 let planeY = 275;  // Position Y de l'avion
-const planeWidth = 50;
-const planeHeight = 50;
-const speed = 5;  // Vitesse de déplacement
+const planeWidth = 50;  // Largeur de l'image de l'avion
+const planeHeight = 50;  // Hauteur de l'image de l'avion
+const speed = 10;  // Vitesse de l'avion
 
-// Fonction pour dessiner l'avion
+// Charger l'image de l'avion
+const planeImage = new Image();
+planeImage.src = 'images/plane.png';  // Chemin vers l'image de l'avion
+
+// Fonction pour dessiner l'avion avec l'image
 function drawPlane() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Efface l'ancien cadre
-    ctx.fillStyle = 'red';
-    ctx.fillRect(planeX, planeY, planeWidth, planeHeight);  // Dessine l'avion
+    
+    // Dessiner l'image de l'avion sur le canvas
+    ctx.drawImage(planeImage, planeX, planeY, planeWidth, planeHeight);
 }
 
 // Fonction pour gérer les déplacements de l'avion
@@ -37,8 +42,10 @@ function movePlane(event) {
     drawPlane();  // Redessine l'avion après le déplacement
 }
 
+// Attendre que l'image de l'avion soit complètement chargée avant de commencer à dessiner
+planeImage.onload = function() {
+    drawPlane();  // Dessiner l'avion une fois que l'image est chargée
+}
+
 // Écouter les événements de touche pour déplacer l'avion
 document.addEventListener('keydown', movePlane);
-
-// Initialiser l'affichage du jeu
-drawPlane();
