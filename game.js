@@ -1,51 +1,51 @@
-// Récupération du canvas et du contexte pour dessiner
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+// Récupérer les éléments du DOM
+const rocket = document.getElementById('rocket');
+const o2Tank = document.getElementById('o2Tank');
+const h2Tank = document.getElementById('h2Tank');
+const fillO2Button = document.getElementById('fillO2');
+const fillH2Button = document.getElementById('fillH2');
+const launchRocketButton = document.getElementById('launchRocket');
 
-// Taille du canvas
-canvas.width = 600;
-canvas.height = 600;
+// Variables de contrôle de la fusée
+let o2Filled = false;
+let h2Filled = false;
+let isLaunched = false;
 
-// Position de départ et taille de l'avion
-let planeX = 275;  // Position X de l'avion
-let planeY = 275;  // Position Y de l'avion
-const planeWidth = 50;  // Largeur de l'image de l'avion
-const planeHeight = 50;  // Hauteur de l'image de l'avion
-const speed = 10;  // Vitesse de l'avion
-
-// Charger l'image de l'avion
-const planeImage = new Image();
-planeImage.src = 'plane.png';  // Chemin vers l'image de l'avion
-
-// Fonction pour dessiner l'avion avec l'image
-function drawPlane() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Efface l'ancien cadre
-    
-    // Dessiner l'image de l'avion sur le canvas
-    ctx.drawImage(planeImage, planeX, planeY, planeWidth, planeHeight);
-}
-
-// Fonction pour gérer les déplacements de l'avion
-function movePlane(event) {
-    if (event.key === 'ArrowUp' && planeY > 0) {
-        planeY -= speed;  // Déplace l'avion vers le haut
+// Fonction pour remplir le réservoir O2
+fillO2Button.addEventListener('click', function() {
+    if (!isLaunched) {
+        o2Tank.style.height = '50%';  // Remplir le réservoir O2 à 50%
+        o2Filled = true;
     }
-    if (event.key === 'ArrowDown' && planeY < canvas.height - planeHeight) {
-        planeY += speed;  // Déplace l'avion vers le bas
-    }
-    if (event.key === 'ArrowLeft' && planeX > 0) {
-        planeX -= speed;  // Déplace l'avion vers la gauche
-    }
-    if (event.key === 'ArrowRight' && planeX < canvas.width - planeWidth) {
-        planeX += speed;  // Déplace l'avion vers la droite
-    }
-    drawPlane();  // Redessine l'avion après le déplacement
-}
+});
 
-// Attendre que l'image de l'avion soit complètement chargée avant de commencer à dessiner
-planeImage.onload = function() {
-    drawPlane();  // Dessiner l'avion une fois que l'image est chargée
-}
+// Fonction pour remplir le réservoir H2
+fillH2Button.addEventListener('click', function() {
+    if (!isLaunched) {
+        h2Tank.style.height = '50%';  // Remplir le réservoir H2 à 50%
+        h2Filled = true;
+    }
+});
 
-// Écouter les événements de touche pour déplacer l'avion
-document.addEventListener('keydown', movePlane);
+// Fonction pour décoller la fusée
+launchRocketButton.addEventListener('click', function() {
+    if (o2Filled && h2Filled && !isLaunched) {
+        isLaunched = true;
+
+        // Change la couleur de la fusée (elle s'allume)
+        rocket.style.backgroundColor = 'yellow';
+
+        // Décoller la fusée vers le haut
+        let position = 0;
+        const interval = setInterval(function() {
+            if (position >= -500) {  // La fusée se déplace de 500px vers le haut
+                rocket.style.transform = `translateY(${position}px)`;
+                position -= 5;  // Augmente la vitesse de déplacement
+            } else {
+                clearInterval(interval);  // Arrêter le mouvement une fois que la fusée est hors écran
+            }
+        }, 20);  // Déplacer la fusée tous les 20ms
+    } else {
+        alert("Il faut remplir O2 et H2 avant de décoller !");
+    }
+});
