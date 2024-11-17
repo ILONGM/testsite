@@ -15,7 +15,7 @@ const speed = 10;  // Vitesse de l'avion
 
 // Charger l'image de l'avion
 const planeImage = new Image();
-planeImage.src = 'images/plane.png';  // Chemin vers l'image de l'avion
+planeImage.src = 'plane.png';  // Chemin vers l'image de l'avion
 
 // Fonction pour dessiner l'avion avec l'image
 function drawPlane() {
