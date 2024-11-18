@@ -1,25 +1,69 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu de la Fusée</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tableau de Suivi des Actions</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
 </head>
 <body>
-    <div class="container">
-        <!-- Fusée -->
-        <div id="rocket" class="rocket">
-            <div id="o2Tank" class="fuel-tank"></div>
-            <div id="h2Tank" class="fuel-tank"></div>
-        </div>
+    <h1>Tableau de Suivi des Actions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Prix Actuel ($)</th>
+                <th>Quantité Détenue</th>
+                <th>Valeur Totale ($)</th>
+            </tr>
+        </thead>
+        <tbody id="stock-table">
+            <tr>
+                <td>Tesla</td>
+                <td id="tesla-price">0</td>
+                <td><input type="number" id="tesla-qty" value="0" onchange="updateTotal('tesla')"></td>
+                <td id="tesla-total">0</td>
+            </tr>
+            <tr>
+                <td>Coca Cola</td>
+                <td id="coca-price">0</td>
+                <td><input type="number" id="coca-qty" value="0" onchange="updateTotal('coca')"></td>
+                <td id="coca-total">0</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td id="apple-price">0</td>
+                <td><input type="number" id="apple-qty" value="0" onchange="updateTotal('apple')"></td>
+                <td id="apple-total">0</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <!-- Boutons -->
-        <button id="fillO2">Remplir O2</button>
-        <button id="fillH2">Remplir H2</button>
-        <button id="launchRocket">Décollage</button>
-    </div>
-    
-    <script src="game.js"></script>
+    <script>
+        // Simule des prix fictifs pour tester le tableau
+        const prices = {
+            tesla: 250.50,
+            coca: 60.30,
+            apple: 170.80
+        };
+
+        // Fonction pour mettre à jour les prix initiaux et recalculer les totaux
+        function initializePrices() {
+            document.getElementById('tesla-price').textContent = prices.tesla.toFixed(2);
+            document.getElementById('coca-price').textContent = prices.coca.toFixed(2);
+            document.getElementById('apple-price').textContent = prices.apple.toFixed(2);
+        }
+
+        // Fonction pour recalculer la valeur totale pour une action donnée
+        function updateTotal(stock) {
+            const qty = document.getElementById(`${stock}-qty`).value;
+            const price = prices[stock];
+            const total = qty * price;
+            document.getElementById(`${stock}-total`).textContent = total.toFixed(2);
+        }
+
+        // Initialisation des prix au chargement de la page
+        window.onload = initializePrices;
+    </script>
 </body>
 </html>
