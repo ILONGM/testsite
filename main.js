@@ -1,3 +1,4 @@
+//a priori cet import ne sert a rien. A chercker et kkill
 import './style.css'
 
 const stocks = [
