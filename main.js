@@ -12,6 +12,15 @@ const stocks = [
     currentPrice: 0
   },
   {
+    name: 'Coca-Cola',
+    ticker: 'KO',
+    logo: 'https://logo.clearbit.com/coca-cola.com',
+    shares: 15,
+    marketOpen: '15:30',
+    market: 'NASDAQ',
+    currentPrice: 0
+  },
+  {
     name: 'Apple',
     ticker: 'AAPL',
     logo: 'https://logo.clearbit.com/apple.com',
