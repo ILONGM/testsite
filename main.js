@@ -1,4 +1,4 @@
-import './testsite/style.css'
+import './style.css'
 
 const stocks = [
   {
