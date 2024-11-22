@@ -1,5 +1,4 @@
-//a priori cet import ne sert a rien. A chercker et kkill
-//import './style.css'
+//importe le CSS
 const link = document.createElement('link');
 link.rel='stylesheet';
 link.href = './style.css';
