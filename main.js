@@ -141,15 +141,6 @@ async function updateStockPrices() {
     if (portfolioTotalElement) {
       portfolioTotalElement.textContent = formatNumber(calculatePortfolioTotal());
     }
-   
-  }
-}
-
-    // Mise à jour du total du portfolio
-    const portfolioTotalElement = document.getElementById('portfolioTotal');
-    if (portfolioTotalElement) {
-      portfolioTotalElement.textContent = formatNumber(calculatePortfolioTotal());
-    }
   } catch (error) {
     console.error('Erreur lors de la mise à jour des prix:', error);
   }
