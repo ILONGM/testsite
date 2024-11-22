@@ -141,8 +141,7 @@ async function updateStockPrices() {
     if (portfolioTotalElement) {
       portfolioTotalElement.textContent = formatNumber(calculatePortfolioTotal());
     }
-  } catch (error) {
-    console.error('Erreur lors de la récupération des prix:', error);
+   
   }
 }
 
