@@ -126,6 +126,10 @@ async function updateStockPrices() {
     for (const stock of stocks) {
       stock.currentPrice = await fetchPrice(stock.ticker);
 
+      // check que le prix est récupéré correctement
+      console.log(`Prix pour ${stock.ticker}:`, data.price);
+
+      
       // Mise à jour dans le DOM
       const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
       const totalElement = document.querySelector(`.stock-total[data-ticker="${stock.ticker}"]`);
