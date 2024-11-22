@@ -62,7 +62,7 @@ function createPortfolioTable() {
   const tableHTML = `
     <div class="container">
       <div class="portfolio-header">
-        <h1>Mon Portfolio d'Investissement</h1>
+        <h1>Mon Yolofolio d'Investissement</h1>
       </div>
       <div class="portfolio-table">
         <table>
