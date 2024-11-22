@@ -150,12 +150,20 @@ async function updateStockPrices() {
   }
 }
 
-//fonction pour récupérer les prix yahoofinance
-async function fetchPrice(ticker) {
-  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.quoteResponse.result[0]?.regularMarketPrice || 0;
+//proxy gratuit pour gérer le front end vs yahoo.
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const yahooUrl = 'https://query1.finance.yahoo.com/v7/finance/quote?symbols=';
+
+//appel api yahoo finance
+async function fetchStockPrice(ticker) {
+  try {
+    const response = await fetch(proxyUrl + yahooUrl + ticker);
+    const data = await response.json();
+    return data.quoteResponse.result[0]; // Récupère le premier résultat
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données:', error);
+    return null;
+  }
 }
 
 
