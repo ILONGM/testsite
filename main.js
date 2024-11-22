@@ -136,17 +136,17 @@ async function updateStockPrices() {
          if (priceElement && totalElement) {
         priceElement.textContent = formatNumber(stock.currentPrice);
         totalElement.textContent = formatNumber(stock.shares * stock.currentPrice);
+        }
       }
-    }
 
     // Mise à jour du total du portfolio
     const portfolioTotalElement = document.getElementById('portfolioTotal');
     if (portfolioTotalElement) {
       portfolioTotalElement.textContent = formatNumber(calculatePortfolioTotal());
-    }
-  } catch (error) {
+      }
+    } catch (error) {
     console.error('Erreur lors de la récupération des prix:', error);
-  }
+    }
 }
      // if (priceElement && totalElement) {
         //priceElement.textContent = formatNumber(randomPrice);
