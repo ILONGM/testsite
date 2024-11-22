@@ -124,19 +124,18 @@ function createPortfolioTable() {
 async function updateStockPrices() {
   try {
     for (const stock of stocks) {
-      stock.currentPrice = await fetchPrice(stock.ticker);
+      const data = await fetchStockPrice(stock.ticker);
+      if (data) {
+        stock.currentPrice = data.regularMarketPrice;
 
-      // check que le prix est récupéré correctement
-      console.log(`Prix pour ${stock.ticker}:`, data.price);
+        const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
+        const totalElement = document.querySelector(`.stock-total[data-ticker="${stock.ticker}"]`);
 
-      
-      // Mise à jour dans le DOM
-      const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
-      const totalElement = document.querySelector(`.stock-total[data-ticker="${stock.ticker}"]`);
-      
-      if (priceElement && totalElement) {
-        priceElement.textContent = formatNumber(stock.currentPrice);
-        totalElement.textContent = formatNumber(stock.shares * stock.currentPrice);
+        if (priceElement && totalElement) {
+          priceElement.textContent = formatNumber(stock.currentPrice);
+          const total = stock.shares * stock.currentPrice;
+          totalElement.textContent = formatNumber(total);
+        }
       }
     }
 
@@ -149,6 +148,7 @@ async function updateStockPrices() {
     console.error('Erreur lors de la mise à jour des prix:', error);
   }
 }
+
 
 //proxy gratuit pour gérer le front end vs yahoo.
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
