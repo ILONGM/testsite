@@ -123,19 +123,37 @@ function createPortfolioTable() {
 
 async function updateStockPrices() {
   try {
-    stocks.forEach(stock => {
-      const randomPrice = Math.random() * 900 + 100;
-      stock.currentPrice = randomPrice;
-      
+    //stocks.forEach(stock => {
+    //  const randomPrice = Math.random() * 900 + 100;
+    //  stock.currentPrice = randomPrice;
+      for (const stock of stocks) {
+      stock.currentPrice = await fetchPrice(stock.ticker);
+        
       const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
       const totalElement = document.querySelector(`.stock-total[data-ticker="${stock.ticker}"]`);
-      
-      if (priceElement && totalElement) {
-        priceElement.textContent = formatNumber(randomPrice);
-        const total = stock.shares * stock.currentPrice;
-        totalElement.textContent = formatNumber(total);
+
+
+         if (priceElement && totalElement) {
+        priceElement.textContent = formatNumber(stock.currentPrice);
+        totalElement.textContent = formatNumber(stock.shares * stock.currentPrice);
       }
-    });
+    }
+
+    // Mise à jour du total du portfolio
+    const portfolioTotalElement = document.getElementById('portfolioTotal');
+    if (portfolioTotalElement) {
+      portfolioTotalElement.textContent = formatNumber(calculatePortfolioTotal());
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération des prix:', error);
+  }
+}
+     // if (priceElement && totalElement) {
+        //priceElement.textContent = formatNumber(randomPrice);
+        //const total = stock.shares * stock.currentPrice;
+        //totalElement.textContent = formatNumber(total);
+    //  }
+   // });
 
     // Mise à jour du total du portfolio
     const portfolioTotalElement = document.getElementById('portfolioTotal');
