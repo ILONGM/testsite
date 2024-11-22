@@ -147,6 +147,17 @@ async function updateStockPrices() {
   }
 }
 
+//fonction pour récupérer les prix yahoofinance
+async function fetchPrice(ticker) {
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.quoteResponse.result[0]?.regularMarketPrice || 0;
+}
+
+
+
+
 // Initialisation
 createPortfolioTable();
 
