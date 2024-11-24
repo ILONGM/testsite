@@ -4,6 +4,8 @@ link.rel='stylesheet';
 link.href = './style.css';
 document.head.appendChild(link);
 
+
+// Crée la liste de mes actions
 const stocks = [
   {
     name: 'Tesla',
@@ -57,6 +59,7 @@ function updateShareCount(ticker, newCount) {
   }
 }
 
+// Crée le tableau avec mes actions 
 function createPortfolioTable() {
   const tableHTML = `
     <div class="container">
@@ -120,6 +123,8 @@ function createPortfolioTable() {
   window.updateShareCount = updateShareCount;
 }
 
+
+//MAJ le prix de mes actions : Fait appel à la fonction fetchstock prices
 async function updateStockPrices() {
   try {
     for (const stock of stocks) {
