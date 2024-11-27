@@ -128,7 +128,7 @@ function createPortfolioTable() {
 async function updateStockPrices() {
   try {
     for (const stock of stocks) {
-      const data = await fetchStockPrice(stock.ticker);
+      const data = await getStockQuote(stock.ticker);
       if (data) {
         stock.currentPrice = data.regularMarketPrice;
 
@@ -169,6 +169,42 @@ async function fetchStockPrice(ticker) {
     return null;
   }
 }
+
+
+
+
+
+
+
+
+async function getStockQuote(ticker) {
+  const url = `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/quotes?ticker=${ticker}`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-Rapidapi-Key': '51c5eb891fmshbd596b70f1034c1p19c22ajsn2493ed1108e3',
+      'X-Rapidapi-Host': 'yahoo-finance15.p.rapidapi.com',
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    console.log(`Données pour ${ticker}:`, data);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données:', error);
+  }
+}
+
+// Exemple d'appel
+getStockQuote('TSLA'); // Remplacez 'TSLA' par un autre symbole boursier si besoin
+
+
+
+
+
+
 
 
 
