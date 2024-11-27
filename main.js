@@ -131,6 +131,7 @@ async function updateStockPrices() {
       const data = await getStockQuote(stock.ticker);
       if (data) {
         stock.currentPrice = data;
+        console.log('je suis passé par là' & data)
 //        stock.currentPrice = data.regularMarketPrice;
 
         const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
