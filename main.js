@@ -130,7 +130,8 @@ async function updateStockPrices() {
     for (const stock of stocks) {
       const data = await getStockQuote(stock.ticker);
       if (data) {
-        stock.currentPrice = data.regularMarketPrice;
+        stock.currentPrice = data;
+//        stock.currentPrice = data.regularMarketPrice;
 
         const priceElement = document.querySelector(`.stock-price[data-ticker="${stock.ticker}"]`);
         const totalElement = document.querySelector(`.stock-total[data-ticker="${stock.ticker}"]`);
@@ -169,9 +170,10 @@ async function getStockQuote(ticker) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(`Données pour ${ticker}:`, data);
+    //console.log(`Données pour ${ticker}:`, data);
     const marketPrice = data[0]?.regularMarketPrice;
-    return marketPrice
+    console.log(marketPrice);
+    return marketPrice;
     
   } catch (error) {
     console.error('Erreur lors de la récupération des données:', error);
