@@ -158,23 +158,6 @@ async function updateStockPrices() {
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const yahooUrl = 'https://query1.finance.yahoo.com/v7/finance/quote?symbols=';
 
-//appel api yahoo finance
-async function fetchStockPrice(ticker) {
-  try {
-    const response = await fetch(proxyUrl + yahooUrl + ticker);
-    const data = await response.json();
-    return data.quoteResponse.result[0]; // Récupère le premier résultat
-  } catch (error) {
-    console.error('Erreur lors de la récupération des données:', error);
-    return null;
-  }
-}
-
-
-
-
-
-
 
 
 async function getStockQuote(ticker) {
@@ -192,6 +175,9 @@ async function getStockQuote(ticker) {
     const response = await fetch(url, options);
     const data = await response.json();
     console.log(`Données pour ${ticker}:`, data);
+    const marketPrice = data[0]?.regularMarketPrice;
+    return marketPrice
+    
   } catch (error) {
     console.error('Erreur lors de la récupération des données:', error);
   }
