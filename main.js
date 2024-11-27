@@ -154,11 +154,6 @@ async function updateStockPrices() {
 }
 
 
-//proxy gratuit pour gérer le front end vs yahoo.
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const yahooUrl = 'https://query1.finance.yahoo.com/v7/finance/quote?symbols=';
-
-
 
 async function getStockQuote(ticker) {
   const url = `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/quotes?ticker=${ticker}`;
@@ -184,7 +179,7 @@ async function getStockQuote(ticker) {
 }
 
 // Exemple d'appel
-getStockQuote('TSLA'); // Remplacez 'TSLA' par un autre symbole boursier si besoin
+//getStockQuote('TSLA'); // Remplacez 'TSLA' par un autre symbole boursier si besoin
 
 
 
