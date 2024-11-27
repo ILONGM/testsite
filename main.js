@@ -170,8 +170,12 @@ async function getStockQuote(ticker) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(`Données pour ${ticker}:`, data);
-    return  data[0]?.regularMarketPrice;
+    if (data && data[0]) {
+    return data[0].regularMarketPrice;
+    } else {
+     console.error(`Aucune donnée trouvée pour ${ticker}`);
+      return null;
+    }
     
   } catch (error) {
     console.error('Erreur lors de la récupération des données:', error);
