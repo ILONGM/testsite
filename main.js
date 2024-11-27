@@ -11,7 +11,7 @@ const stocks = [
     name: 'Tesla',
     ticker: 'TSLA',
     logo: 'https://logo.clearbit.com/tesla.com',
-    shares: 10,
+    shares: 21,
     marketOpen: '15:30',
     market: 'NASDAQ',
     currentPrice: 0
@@ -20,16 +20,16 @@ const stocks = [
     name: 'Coca-Cola',
     ticker: 'KO',
     logo: 'https://logo.clearbit.com/coca-cola.com',
-    shares: 15,
+    shares: 100,
     marketOpen: '15:30',
     market: 'NASDAQ',
     currentPrice: 0
   },
   {
-    name: 'Apple',
-    ticker: 'AAPL',
-    logo: 'https://logo.clearbit.com/apple.com',
-    shares: 15,
+    name: 'Phillips 66',
+    ticker: 'PSX',
+    logo: 'https://logo.clearbit.com/Phillips66.com',
+    shares: 50,
     marketOpen: '15:30',
     market: 'NASDAQ',
     currentPrice: 0
